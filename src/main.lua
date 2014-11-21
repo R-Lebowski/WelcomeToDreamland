@@ -1,6 +1,6 @@
 --[[
 	Welcome To Dreamland
-	Version: Alpha_0.00.01
+	Version: Alpha_0.01.05
 	"Waggish Washington"
 	Author: Raymond Lebowski
 	Start Date: 11/20/2014
@@ -9,15 +9,19 @@
 
 require('items')
 require('player')
+local gui = require('gui')
 
 
 function love.load()
 	font = love.graphics.newFont(10)
 	love.graphics.setFont(font)
+
+	guiState = 1
 end
 
 function love.update(dt)
 	--Simple Player Movements
+	--Boundries need to be fixed
 	if love.keyboard.isDown("left") then
 		if (player.x >= 14) then
 			player.x = player.x - player.speed*dt
@@ -47,18 +51,10 @@ function love.draw()
 	--Room borders
 	love.graphics.setColor(255, 255, 255)
 	love.graphics.rectangle("line", 10, 50, 350, 250)
-
-	--Player statistics information
-	love.graphics.setColor(255, 255, 255)
-	love.graphics.printf("Health - " .. player.health,
-				10, 310, 250)
-	love.graphics.printf("Attack - " .. player.attack,
-				10, 325, 250)
-	love.graphics.printf("Defense - " .. player.defense,
-				10, 340, 250)
-	love.graphics.printf("Strength - " .. player.strength,
-				10, 355, 250)
 	
+	--Player statistics information
+	drawGUI(guiState)
+
 	--Player graphics
 	love.graphics.setColor(0, 0, 255)
 	love.graphics.rectangle("fill", player.x, player.y,
