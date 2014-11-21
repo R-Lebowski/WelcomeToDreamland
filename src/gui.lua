@@ -1,3 +1,10 @@
+--[[
+	Welcome to Dreamland::GUI class
+	Version: alpha_0.00.05
+	Start Date: 11/20/2014
+	Last Update: 11/21/2014
+	Author: Raymond Lebowski
+--]]
 require('player')
 
 function drawGUI(state)

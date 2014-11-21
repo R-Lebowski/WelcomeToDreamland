@@ -4,7 +4,7 @@
 	"Waggish Washington"
 	Author: Raymond Lebowski
 	Start Date: 11/20/2014
-	Latest Update: 11/20/2014
+	Latest Update: 11/21/2014
 --]]
 
 require('items')
