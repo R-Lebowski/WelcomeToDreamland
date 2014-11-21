@@ -28,7 +28,7 @@ function levelUp()
 	player.level = player.level + 1
 	player.health = player.health * player.level - 20
 	player.attack = player.attack + 15
-	player.defense = player.defense * player.level - 20
+	player.defense = player.defense * player.level
 	player.magic = player.magic * player.level
 	player.strength = player.strength * player.level - 10
 end

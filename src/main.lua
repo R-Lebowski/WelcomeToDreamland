@@ -19,6 +19,13 @@ function love.load()
 	guiState = 1
 end
 
+--Monitors key releases
+function love.keyreleased(key)
+	--error checking player levelUp
+	if(key == 'f1') then
+		levelUp()
+	end
+end
 function love.update(dt)
 	--Simple Player Movements
 	--Boundries need to be fixed
