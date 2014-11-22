@@ -1,6 +1,6 @@
 --[[
 	Welcome To Dreamland::Player Header
-	Version: Alpha_0.00.12
+	Version: Alpha_0.02.12
 	Start Date: 11/20/2014
 	Last Update: 11/21/2014
 
@@ -20,12 +20,12 @@ player = {
 			attack = 10,
 			defense = 10,
 			magic = 0,
-			strength = 10
+			strength = 10,
 			curXP = 0
 		  }
 
 --Ammount of xp needed to level up
-xpThreasholds = {0, 150, 300, 600, 1200, 2400, 4800, 16000, 
+xpThreasholds = {50, 150, 300, 600, 1200, 2400, 4800, 16000, 
 				32000, 64000}
 
 --Generic level up function for all player stats
@@ -36,6 +36,7 @@ function levelUp()
 	player.defense = player.defense * player.level
 	player.magic = player.magic * player.level
 	player.strength = player.strength * player.level - 10
+	player.curXP = player.curXP % xpThreasholds[player.level-1]
 end
 
 --Boolean function, returns true if threashold for next level is

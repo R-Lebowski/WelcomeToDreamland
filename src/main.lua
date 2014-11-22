@@ -1,6 +1,6 @@
 --[[
 	Welcome To Dreamland
-	Version: Alpha_0.01.05
+	Version: Alpha_0.05.07
 	"Waggish Washington"
 	Author: Raymond Lebowski
 	Start Date: 11/20/2014
@@ -25,7 +25,12 @@ function love.keyreleased(key)
 	if(key == 'f1') then
 		levelUp()
 	end
+	--error checking player xp gain
+	if(key == 'x') then
+		player.curXP = player.curXP + 1
+	end
 end
+
 function love.update(dt)
 	--Simple Player Movements
 	--Boundries need to be fixed
@@ -42,9 +47,15 @@ function love.update(dt)
 			player.y = player.y - player.speed*dt
 		end
 	elseif love.keyboard.isDown("down") then
-		if (player.y <= 250) then
+		if (player.y <= 290) then
 			player.y = player.y + player.speed*dt
 		end
+	end
+
+	--check for level up
+	if threasholdCheck() then
+		levelUp()
+		guiState = 2
 	end
 end
 
@@ -52,7 +63,7 @@ function love.draw()
 	--Header version information
 	love.graphics.setColor(255, 255, 255)
 	love.graphics.printf("Welcome to Dreamland"..
-				" - Version: alpha_0.00.01", 10, 10, 250)
+				" - Version: alpha_0.05.07", 10, 10, 250)
 	love.graphics.print("\"Waggish Washington\"", 10, 25)
 
 	--Room borders
