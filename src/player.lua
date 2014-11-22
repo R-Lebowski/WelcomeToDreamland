@@ -21,7 +21,12 @@ player = {
 			defense = 10,
 			magic = 0,
 			strength = 10
+			curXP = 0
 		  }
+
+--Ammount of xp needed to level up
+xpThreasholds = {0, 150, 300, 600, 1200, 2400, 4800, 16000, 
+				32000, 64000}
 
 --Generic level up function for all player stats
 function levelUp()
@@ -31,6 +36,16 @@ function levelUp()
 	player.defense = player.defense * player.level
 	player.magic = player.magic * player.level
 	player.strength = player.strength * player.level - 10
+end
+
+--Boolean function, returns true if threashold for next level is
+--reached, false if not
+function threasholdCheck()
+	if player.curXP >= xpThreasholds[player.level] then
+		return true
+	else
+		return false
+	end
 end
 
 --Checks player defense against enemy attack
